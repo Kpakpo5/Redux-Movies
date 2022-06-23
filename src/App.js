@@ -1,8 +1,11 @@
+import Header from './components/Header';
+import MovieCardsContainer from './components/MovieCardsContainer';
 
 function App() {
   return (
-    <div className="">
-      App
+    <div className="h-full">
+      <Header />
+        <MovieCardsContainer />
     </div>
   );
 }
