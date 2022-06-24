@@ -31,8 +31,8 @@ const movies = [
       dislikes: 2
     }, {
       id: '6',
-      title: 'Pulp Fiction',
-      category: 'Thriller',
+      title: 'Forest Gump',
+      category: 'Drame',
       likes: 11,
       dislikes: 3
     }, {
