@@ -59,7 +59,20 @@ const movies = [
       category: 'Thriller',
       likes: 22,
       dislikes: 12
+    },{
+      id: '11',
+      title: 'Toy Story',
+      category: 'Animation',
+      likes: 11,
+      dislikes: 1
+    }, {
+      id: '12',
+      title: 'Les visiteurs',
+      category: 'Comedy',
+      likes: 52,
+      dislikes: 5
     },
+
   ]
   
   export const movies$ = new Promise((resolve, reject) => setTimeout(resolve, 100, movies))
