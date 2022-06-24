@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const MovieCardsContainer = () => {
     const movies = useSelector((state) => state.movies.moviesList);
-    console.log(movies)
 
     if(!movies) {
         return <div>Loading...</div>

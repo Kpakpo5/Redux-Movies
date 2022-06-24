@@ -11,7 +11,6 @@ function App() {
   useEffect( () => {
     const getData = async () => {
       const data = await movies$;
-      console.log(data);
       return data;
     }
 
