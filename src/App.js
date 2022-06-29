@@ -17,7 +17,7 @@ function App() {
     getData().then((data) => {
       dispatch(getMovies(data));
     })
-  },[dispatch])
+  });
 
   return (
     <div className="h-full">
