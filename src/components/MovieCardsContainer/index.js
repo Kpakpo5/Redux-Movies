@@ -1,8 +1,20 @@
 import MovieCard from "../MovieCard";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategories } from "../../redux/categories-slice";
 
 const MovieCardsContainer = () => {
+    const dispatch = useDispatch();
+
     const movies = useSelector((state) => state.movies.moviesList);
+    
+    useEffect(() => {
+        const categories = movies.map(movie => {
+           return movie.category;
+        });
+        const categoriesCollection = [...new Set(categories)];
+        dispatch(getCategories(categoriesCollection));
+    },[movies]);
 
     if(!movies) {
         return <div>Loading...</div>
