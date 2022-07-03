@@ -2,7 +2,7 @@ import Header from './components/Header';
 import MovieCardsContainer from './components/MovieCardsContainer';
 import { movies$ } from './movies';
 import { useEffect } from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {getMovies} from './redux/movies-slice';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="h-full">
       <Header />
-        <MovieCardsContainer />
+      <MovieCardsContainer />
     </div>
   );
 }

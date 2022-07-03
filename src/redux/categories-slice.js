@@ -10,12 +10,12 @@ const categoriesSlice = createSlice({
         getCategories: (state, action) => {
             state.categoriesList = action.payload;
         },
-        getCurrentCategory: (state, action) => {
+        setCurrentCategory: (state, action) => {
             state.currentCategory = action.payload;
         }
     }
 });
 
-export const { getCategories, getCurrentCategory } = categoriesSlice.actions;
+export const { getCategories, setCurrentCategory } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

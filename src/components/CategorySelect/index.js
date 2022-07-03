@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { getCurrentCategory } from "../../redux/categories-slice";
+import { setCurrentCategory } from "../../redux/categories-slice";
 import Option from './Option';
 
 const CategorySelect = () => {
@@ -8,7 +8,7 @@ const CategorySelect = () => {
     const categories = useSelector((state) => state.categories.categoriesList);
     const handleChange = (e) => {
         const optionValue = e.target.value;
-        dispatch(getCurrentCategory(optionValue));
+        dispatch(setCurrentCategory(optionValue));
     }
 
     return (

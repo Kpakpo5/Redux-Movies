@@ -16,13 +16,23 @@ const MovieCardsContainer = () => {
         dispatch(getCategories(categoriesCollection));
     },[movies]);
 
+
+    const moviesPerPage = useSelector((state) => state.pagination.moviesPerPage);
+    const currentPage = useSelector((state) => state.pagination.currentPage);
+
+    const indexOfLastMovie = currentPage * moviesPerPage ;
+    const indexOfFirstMovie = indexOfLastMovie - moviesPerPage ;
+    const currentPageMovies  = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+
+    console.log(currentPageMovies);
+
     if(!movies) {
         return <div>Loading...</div>
     }
 
     return (
     <div className="flex flex-wrap justify-center mt-20 xl:w-4/5 mx-auto">
-        {movies.map((movie) => 
+        {currentPageMovies.map((movie) => 
             <MovieCard 
                 key={movie.title}
                 title={movie.title}
