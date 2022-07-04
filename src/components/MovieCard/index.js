@@ -1,20 +1,14 @@
 import { XCircleIcon } from '@heroicons/react/solid';
 import MovieEvaluation from './MovieEvaluation';
-import { useSelector, useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {deleteMovie} from '../../redux/movies-slice';
 
 
 const MovieCard = ({ title, category, likes, dislikes}) => {
     const dispatch = useDispatch();
 
-    const currentCategory = useSelector((state) => state.categories.currentCategory);
-
     return (
-        <div className={`rounded overflow-hidden bg-[#151618] relative text-white w-56 h-72 flex-col justify-center items-center m-4 shadow-inner shadow-slate-700 hover:shadow-gray-400 pt-10 animate-fade-in-bottom ${
-            (currentCategory !== "" && currentCategory !== category)
-            ? "hidden"
-            : "flex"
-        }`}>
+        <div className={`rounded overflow-hidden bg-[#151618] relative text-white w-56 h-72 flex flex-col justify-center items-center m-4 shadow-inner shadow-slate-700 hover:shadow-gray-400 pt-10 animate-fade-in-bottom `}>
             <button 
             className="absolute top-1 right-1 text-r w-6 cursor-pointer"
             onClick={() => dispatch(deleteMovie(title))}

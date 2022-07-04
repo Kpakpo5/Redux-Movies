@@ -17,12 +17,30 @@ const MovieCardsContainer = () => {
     },[movies]);
 
 
+    const currentCategory = useSelector((state) => state.categories.currentCategory);
+
+    const getCurrentcategoryMovies = (category, moviesArray) => {
+        let categoryMovies = []
+        if (category === "") {
+            categoryMovies = moviesArray ;
+        } else {
+            categoryMovies = moviesArray.filter((movie) => movie.category === category);
+        }
+        
+        return categoryMovies;
+    }
+
+    const currentCategoryMovies = getCurrentcategoryMovies (currentCategory, movies);
+
+    console.log(currentCategoryMovies);
+
+
     const moviesPerPage = useSelector((state) => state.pagination.moviesPerPage);
     const currentPage = useSelector((state) => state.pagination.currentPage);
 
     const indexOfLastMovie = currentPage * moviesPerPage ;
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage ;
-    const currentPageMovies  = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+    const currentPageMovies  = currentCategoryMovies.slice(indexOfFirstMovie, indexOfLastMovie);
 
     console.log(currentPageMovies);
 
