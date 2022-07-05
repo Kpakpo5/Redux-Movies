@@ -17,7 +17,17 @@ const PaginationNav = ({ movies, moviesPerPage, currentPage }) => {
 
     return (
         <nav className="flex items-center mt-20">
-            <button onClick={() => dispatch(setCurrentPage(previousPage))} className="border text-gray-200 cursor-pointer m-2 px-3 py-1 rounded hover:border-yellow-400">Précédent</button>
+            <button 
+                disabled={currentPage === 1}
+                onClick={() => dispatch(setCurrentPage(previousPage))}
+                className={`border text-gray-200 cursor-pointer m-2 px-3 py-1 rounded hover:border-yellow-400 ${
+                    currentPage === 1
+                    ? "opacity-50 hover:border-inherit cursor-not-allowed"
+                    : ""
+                }`}
+            >
+                Précédent
+            </button>
             <ul className="flex">
                 {pageNumbers.map(number => (
                     <li key={number}
@@ -32,7 +42,16 @@ const PaginationNav = ({ movies, moviesPerPage, currentPage }) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => dispatch(setCurrentPage(nextPage))} className="border text-gray-200 cursor-pointer m-2 px-3 py-1 rounded hover:border-yellow-400">suivant</button>
+            <button 
+                onClick={() => dispatch(setCurrentPage(nextPage))}
+                className={`border text-gray-200 cursor-pointer m-2 px-3 py-1 rounded hover:border-yellow-400 ${
+                    currentPage === pageNumbers.length
+                    ? "opacity-50 hover:border-inherit cursor-not-allowed"
+                    : ""
+                }`}
+            >
+                suivant
+            </button>
         </nav>
     )
 }
