@@ -1,9 +1,11 @@
-import MovieCard from "../MovieCard";
+import MoviesPerPageSelect from "../Pagination/MoviesPerPageSelect";
+import PaginationNav from "../Pagination/PaginationNav";
+import Page from "./Page";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from "../../redux/categories-slice";
 
-const MovieCardsContainer = () => {
+const PagesContainer = () => {
     const dispatch = useDispatch();
 
     const movies = useSelector((state) => state.movies.moviesList);
@@ -32,9 +34,8 @@ const MovieCardsContainer = () => {
 
     const currentCategoryMovies = getCurrentcategoryMovies (currentCategory, movies);
 
-    console.log(currentCategoryMovies);
 
-
+    
     const moviesPerPage = useSelector((state) => state.pagination.moviesPerPage);
     const currentPage = useSelector((state) => state.pagination.currentPage);
 
@@ -42,26 +43,23 @@ const MovieCardsContainer = () => {
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage ;
     const currentPageMovies  = currentCategoryMovies.slice(indexOfFirstMovie, indexOfLastMovie);
 
-    console.log(currentPageMovies);
 
     if(!movies) {
         return <div>Loading...</div>
     }
 
     return (
-    <div className="flex flex-wrap justify-center mt-20 xl:w-4/5 mx-auto">
-        {currentPageMovies.map((movie) => 
-            <MovieCard 
-                key={movie.title}
-                title={movie.title}
-                category={movie.category}
-                likes={movie.likes}
-                dislikes={movie.dislikes}
-            />
-        )}
+    <div className="flex flex-col items-center mt-20 xl:w-4/5 mx-auto">
+        <MoviesPerPageSelect />
+        <Page movies={currentPageMovies}/>
+        <PaginationNav
+            movies={currentCategoryMovies}
+            moviesPerPage={moviesPerPage}
+            currentPage={currentPage}
+        />
     </div>
     )
 }
 
 
-export default MovieCardsContainer;
+export default PagesContainer;
