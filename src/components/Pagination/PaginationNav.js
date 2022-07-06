@@ -13,8 +13,6 @@ const PaginationNav = ({ movies, moviesPerPage, currentPage }) => {
         pageNumbers.push(i);
     }
 
-    console.log(pageNumbers);
-
     return (
         <nav className="flex items-center mt-20">
             <button 
@@ -43,6 +41,7 @@ const PaginationNav = ({ movies, moviesPerPage, currentPage }) => {
                 ))}
             </ul>
             <button 
+                disabled={currentPage === pageNumbers.length}
                 onClick={() => dispatch(setCurrentPage(nextPage))}
                 className={`border text-gray-200 cursor-pointer m-2 px-3 py-1 rounded hover:border-yellow-400 ${
                     currentPage === pageNumbers.length
