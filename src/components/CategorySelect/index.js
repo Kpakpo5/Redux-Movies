@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { setCurrentCategory } from "../../redux/categories-slice";
+import { setCurrentPage } from "../../redux/pagination-slice";
 import Option from './Option';
 
 const CategorySelect = () => {
@@ -9,6 +10,7 @@ const CategorySelect = () => {
     const handleChange = (e) => {
         const optionValue = e.target.value;
         dispatch(setCurrentCategory(optionValue));
+        dispatch(setCurrentPage(1));
     }
 
     return (

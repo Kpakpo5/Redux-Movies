@@ -1,4 +1,4 @@
-import { movies$ } from "../../../movies";
+
 import Input from "./Input";
 
 const MoviesPerPageSelect = () => {

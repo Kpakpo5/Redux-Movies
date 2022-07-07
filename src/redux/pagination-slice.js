@@ -10,6 +10,7 @@ const paginationSlice = createSlice({
     reducers: {
         setMoviesPerPage: (state, action) => {
             state.moviesPerPage = action.payload;
+            state.currentPage = 1;
         },
         setCurrentPage: (state, action) => {
             state.currentPage = action.payload;
